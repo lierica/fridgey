@@ -1,0 +1,15 @@
+<h1><%= @fridge.name %></h1>
+
+<h2>Frozen Meals</h2>
+	<ul>
+			<% @fridge.frozen_servings.each do |meal| %>
+				<li><%= meal.recipe.name %> - <%= meal.date_in.strftime("%m/%d") %></li>
+			<% end %>
+	</ul>
+
+<h2>Ingredients</h2>
+<ul>
+		<% @fridge.fridge_ingredients.each do |ingredient| %>
+			<li><%= ingredient.ingredient.name %> - <%= ingredient.date_in.strftime("%m/%d") %></li>
+		<% end %>
+</ul>
