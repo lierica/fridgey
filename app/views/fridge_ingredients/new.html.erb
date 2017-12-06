@@ -1,0 +1,10 @@
+<h1> Add an Ingredient </h1>
+<%= form_for [@fridge, @fridge_ingredient] do |f| %>
+	<%= f.label "Choose an Ingredient:" %>
+	<%= f.collection_select :ingredient_id, @ingredients, :id, :name %> <br>
+	<br>
+	<%= f.label "Date Purchased:"%>
+ 	<%= f.date_field :date_in %><br>
+	<br>
+	<%= f.submit "Add Ingredient" %>
+<% end %>

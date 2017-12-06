@@ -14,3 +14,4 @@
 			<li><%= ingredient.ingredient.name %> - <%= ingredient.date_in.strftime("%m/%d") %></li>
 		<% end %>
 </ul>
+	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>

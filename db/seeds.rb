@@ -26,6 +26,7 @@ Ingredient.create(name: "Whole Chicken", expiration_days: 3)
 
 Fridge.create(name: "Josh's Fridge")
 Fridge.create(name: "Erica's Fridge")
+Fridge.create(name: "John's Fridge")
 
 FrozenServing.create(recipe_id: 4, fridge_id: 1, date_in: "2017-11-30")
 FrozenServing.create(recipe_id: 2, fridge_id: 1, date_in: "2017-12-01")
