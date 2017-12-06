@@ -6,6 +6,5 @@ Rails.application.routes.draw do
 
 	resources :recipes
 	resources :ingredients
-	resources :fridge_ingredients
 	resources :recipe_ingredients
 end

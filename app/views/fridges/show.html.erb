@@ -1,17 +1,40 @@
 <h1><%= @fridge.name %></h1>
 
+<%= form_tag fridge_path(@fridge), method: :get do %>
+<p>Sort by: </p> <%= select_tag(:sort, options_for_select([["Expiring Soonest", "EXP ASC"], ["Most Days Until Expiration", "EXP DESC"], ["Name", "NAME"], ["Recently Added", "DATE DESC" ], ["In Fridge Longest", "DATE ASC"]])) %>
+<%= submit_tag "Sort" %>
+<% end %>
+
 <h2>Frozen Meals</h2>
-	<ul>
+	<table>
+  <tr>
+    <th>Name</th>
+    <th>Date In</th>
+    <th>Days Until Expiration</th>
+  </tr>
 		<% @fridge.frozen_servings.each do |meal| %>
-			<li><%= meal.recipe.name %> - <%= meal.date_in.strftime("%m/%d") %></li>
+	<tr>
+    <td><%= meal.recipe.name %></td>
+    <td><%= meal.date_in.strftime("%m/%d") %></td>
+    <td><%= meal.expiration_message %></td>
+	</tr>
 		<% end %>
-	</ul>
+</table>
 	 <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
 
 <h2>Ingredients</h2>
-<ul>
+	<table>
+  <tr>
+    <th>Name</th>
+    <th>Date In</th>
+    <th>Days Until Expiration</th>
+  </tr>
 		<% @fridge.fridge_ingredients.each do |ingredient| %>
-			<li><%= ingredient.ingredient.name %> - <%= ingredient.date_in.strftime("%m/%d") %></li>
+	<tr>
+    <td><%= ingredient.ingredient.name %></td>
+    <td><%= ingredient.date_in.strftime("%m/%d") %></td>
+    <td><%= ingredient.expiration_message %></td>
+	</tr>
 		<% end %>
-</ul>
+</table>
 	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
