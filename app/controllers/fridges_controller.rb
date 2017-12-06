@@ -10,8 +10,10 @@ class FridgesController < ApplicationController
 	end
 
 	def show
-	
+		@previous_selection = params[:sort]
 		@fridge = Fridge.find(params[:id])
+		@fridge_ingredients = @fridge.sort_fridge_ingredients(params[:sort])
+		@frozen_servings = @fridge.sort_frozen_servings(params[:sort])
 	end
 
 	private
