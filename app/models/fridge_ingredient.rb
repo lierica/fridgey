@@ -15,10 +15,16 @@ class FridgeIngredient < ApplicationRecord
     if self.days_until_expiration == 0
       "Expires today."
     elsif self.days_until_expiration > 0
-      "Expires in #{self.days_until_expiration} day(s)."
+        "#{self.days_until_expiration} days"
+    elsif self.days_until_expiration == 1
+        "#{self.days_until_expiration} day"
     else
-      @days_since = self.days_until_expiration * -1
-      "Expired #{@days_since} day(s) ago."
+        @days_since = self.days_until_expiration * -1
+        if @days_since == 1
+          "#{@days_since} day"
+        else
+          "#{@days_since} days"
+        end
     end
   end
 

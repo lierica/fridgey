@@ -13,12 +13,16 @@
     <th>Days Until Expiration</th>
   </tr>
 		<% @frozen_servings.each do |meal| %>
+			<% if meal.days_until_expiration < 0 %>
+			<% @expired_frozen_servings << meal %>
+			<% else %>
 	<tr>
     <td><%= meal.recipe.name %></td>
     <td><%= meal.date_in.strftime("%m/%d") %></td>
     <td><%= meal.expiration_message %></td>
 	</tr>
 		<% end %>
+	<% end %>
 </table>
 	 <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
 
@@ -30,12 +34,16 @@
     <th>Days Until Expiration</th>
   </tr>
 		<% @fridge_ingredients.each do |ingredient| %>
+		<% if ingredient.days_until_expiration < 0 %>
+		<% @expired_fridge_ingredients << ingredient %>
+		<% else %>
 	<tr>
     <td><%= ingredient.ingredient.name %></td>
     <td><%= ingredient.date_in.strftime("%m/%d") %></td>
     <td><%= ingredient.expiration_message %></td>
 	</tr>
 		<% end %>
+	<% end %>
 </table>
 	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
 
@@ -43,12 +51,17 @@
 <table>
 <tr>
 	<th>Name</th>
-	<th>Expired On</th>
+	<th>Days Expired</th>
 </tr>
-	<% @fridge_ingredients.each do |ingredient| %>
+	<% @expired_frozen_servings.each do |meal| %>
+<tr>
+	<td><%= meal.recipe.name %></td>
+	<td><%= meal.expiration_message %></td>
+</tr>
+	<% end %>
+	<% @expired_fridge_ingredients.each do |ingredient| %>
 <tr>
 	<td><%= ingredient.ingredient.name %></td>
-	<td><%= ingredient.date_in.strftime("%m/%d") %></td>
 	<td><%= ingredient.expiration_message %></td>
 </tr>
 	<% end %>

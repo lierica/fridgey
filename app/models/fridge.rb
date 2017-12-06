@@ -4,20 +4,6 @@ class Fridge < ApplicationRecord
 	has_many :frozen_servings
 	has_many :recipes, through: :frozen_servings
 
-	def expired_fridge_ingredients
-
-	end
-
-	def good_fridge_ingredients
-	end
-
-	def expired_frozen_servings
-	end
-
-	def good_frozen_servings
-
-	end
-
 	def sort_fridge_ingredients(sort_method)
 		if sort_method.nil? || sort_method == "DATE ASC"
 			self.fridge_ingredients.order(:date_in)

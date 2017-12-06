@@ -14,6 +14,8 @@ class FridgesController < ApplicationController
 		@fridge = Fridge.find(params[:id])
 		@fridge_ingredients = @fridge.sort_fridge_ingredients(params[:sort])
 		@frozen_servings = @fridge.sort_frozen_servings(params[:sort])
+		@expired_frozen_servings = []
+		@expired_fridge_ingredients = []
 	end
 
 	private
