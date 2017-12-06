@@ -17,5 +17,6 @@ class FridgesController < ApplicationController
 
 	def fridge_params
 		params.require(:fridge).permit(*args)
+	end
 
 end

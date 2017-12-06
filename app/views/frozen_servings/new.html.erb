@@ -1,6 +1,10 @@
-<h1> Make a Meal </h1>
-<%= form_for @frozen_serving do |f| %>
-	<%= f.label :recipe %>
-	<%= f.collection_select :recipe_id, @recipes, :id, :name %>
-	<%= f.submit %>
+<h1> Add a Meal </h1>
+<%= form_for [@fridge, @frozen_serving] do |f| %>
+	<%= f.label "Choose Meal:" %>
+	<%= f.collection_select :recipe_id, @recipes, :id, :name %> <br>
+	<br>
+	<%= f.label "Date Made:"%>
+ 	<%= f.date_field :date_in %><br>
+	<br>
+	<%= f.submit "Add Meal" %>
 <% end %>

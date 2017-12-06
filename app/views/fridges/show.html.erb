@@ -2,10 +2,11 @@
 
 <h2>Frozen Meals</h2>
 	<ul>
-			<% @fridge.frozen_servings.each do |meal| %>
-				<li><%= meal.recipe.name %> - <%= meal.date_in.strftime("%m/%d") %></li>
-			<% end %>
+		<% @fridge.frozen_servings.each do |meal| %>
+			<li><%= meal.recipe.name %> - <%= meal.date_in.strftime("%m/%d") %></li>
+		<% end %>
 	</ul>
+	 <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
 
 <h2>Ingredients</h2>
 <ul>

@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20171205162958) do
   create_table "fridge_ingredients", force: :cascade do |t|
     t.integer "ingredient_id"
     t.integer "fridge_id"
-    t.datetime "date_in"
-    t.datetime "date_out"
+    t.date "date_in"
+    t.date "date_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fridge_id"], name: "index_fridge_ingredients_on_fridge_id"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20171205162958) do
   create_table "frozen_servings", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "fridge_id"
-    t.datetime "date_in"
-    t.datetime "date_out"
+    t.date "date_in"
+    t.date "date_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fridge_id"], name: "index_frozen_servings_on_fridge_id"
