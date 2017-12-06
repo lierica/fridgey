@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 	resources :recipes
 	resources :ingredients
 	resources :recipe_ingredients
+
+	post '/fridges/:id/throwaway', to: "fridges#throwaway", as: "throwaway"
 end

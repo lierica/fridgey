@@ -2,7 +2,6 @@ class FrozenServing < ApplicationRecord
   belongs_to :recipe
   belongs_to :fridge
 
-
   def expiration_date
     self.date_in + 60
   end
