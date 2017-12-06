@@ -3,6 +3,12 @@
 	<%= f.label "Choose an Ingredient:" %>
 	<%= f.collection_select :ingredient_id, @ingredients, :id, :name %> <br>
 	<br>
+	<%= f.label "Or Create an Ingredient:" %><br>
+	<%= f.label "Name" %>
+	<%= text_field_tag :name %> <br>
+	<%= label_tag "Days Until Expiration:" %>
+	<%= text_field_tag :expiration_days %> <br>
+	<br>
 	<%= f.label "Date Purchased:"%>
  	<%= f.date_field :date_in %><br>
 	<br>

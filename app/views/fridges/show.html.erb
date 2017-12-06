@@ -38,3 +38,18 @@
 		<% end %>
 </table>
 	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
+
+<h2>Expired Items</h2>
+<table>
+<tr>
+	<th>Name</th>
+	<th>Expired On</th>
+</tr>
+	<% @fridge_ingredients.each do |ingredient| %>
+<tr>
+	<td><%= ingredient.ingredient.name %></td>
+	<td><%= ingredient.date_in.strftime("%m/%d") %></td>
+	<td><%= ingredient.expiration_message %></td>
+</tr>
+	<% end %>
+</table>
