@@ -1,9 +1,12 @@
 <h1><%= @fridge.name %></h1>
 
+<%= link_to "Fridge Analytics", fridge_analytics_path(@fridge) %>
+
 <%= form_tag fridge_path(@fridge), method: :get do %>
 <p>Sort by: </p> <%= select_tag(:sort, options_for_select([["Expiring Soonest", "EXP ASC"], ["Most Days Until Expiration", "EXP DESC"], ["Name", "NAME"], ["Recently Added", "DATE DESC" ], ["In Fridge Longest", "DATE ASC"]], @previous_selection)) %>
 <%= submit_tag "Sort" %>
 <% end %>
+
 
 <h2>Frozen Meals <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %></h2>
 	<table>

@@ -26,12 +26,20 @@ Ingredient.create(name: "Whole Chicken", expiration_days: 3)
 
 Fridge.create(name: "Josh's Fridge")
 Fridge.create(name: "Erica's Fridge")
-Fridge.create(name: "John's Fridge")
 
 FrozenServing.create(recipe_id: 4, fridge_id: 1, date_in: "2017-11-30")
 FrozenServing.create(recipe_id: 2, fridge_id: 1, date_in: "2017-12-01")
 FrozenServing.create(recipe_id: 1, fridge_id: 2, date_in: "2017-12-05")
-FrozenServing.create(recipe_id: 3, fridge_id: 2, date_in: "2017-12-03")
+FrozenServing.create(recipe_id: 3, fridge_id: 2, date_in: "2017-10-03")
+FrozenServing.create(recipe_id: 3, fridge_id: 2, date_in: "2017-09-03")
+FrozenServing.create(recipe_id: 3, fridge_id: 2, date_in: "2017-08-03")
+FrozenServing.create(recipe_id: 3, fridge_id: 2, date_in: "2017-07-03")
+FrozenServing.create(recipe_id: 5, fridge_id: 2, date_in: "2017-06-03")
+FrozenServing.create(recipe_id: 5, fridge_id: 2, date_in: "2017-05-03")
+FrozenServing.create(recipe_id: 5, fridge_id: 2, date_in: "2017-04-03")
+FrozenServing.create(recipe_id: 5, fridge_id: 2, date_in: "2017-03-03")
+FrozenServing.create(recipe_id: 1, fridge_id: 2, date_in: "2017-04-09")
+
 
 RecipeIngredient.create(recipe_id: 1, ingredient_id: 1, quantity: 2)
 RecipeIngredient.create(recipe_id: 1, ingredient_id: 2, quantity: 1)

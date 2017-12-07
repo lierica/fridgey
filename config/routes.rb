@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	resources :fridges do
 		resources :frozen_servings
 		resources :fridge_ingredients
+		get '/analytics', to: "fridges#analytics", as: "analytics"
 	end
 
 	resources :recipes

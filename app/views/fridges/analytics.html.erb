@@ -1,0 +1,30 @@
+<h1> Your Fridge Analytics </h1>
+
+<h2>Items Expiring Most Often</h2>
+<h3> Meals </h3>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Times Expired</th>
+	  </tr>
+				<% @meals_expiring_most_often.each do |k, v| %>
+		<tr>
+	    <td><%= k %></td>
+	    <td><%= v %></td>
+		</tr>
+				<% end %>
+	</table>
+
+	<h3> Ingredients </h3>
+		<table>
+		  <tr>
+		    <th>Name</th>
+		    <th>Times Expired</th>
+		  </tr>
+					<% @ingredients_expiring_most_often.each do |k, v| %>
+			<tr>
+		    <td><%= k %></td>
+		    <td><%= v %></td>
+			</tr>
+					<% end %>
+		</table>

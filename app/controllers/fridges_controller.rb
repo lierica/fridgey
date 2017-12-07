@@ -34,6 +34,12 @@ class FridgesController < ApplicationController
 		redirect_to fridge_path(@fridge)
 	end
 
+	def analytics
+		@fridge = Fridge.find(params[:fridge_id])
+		@meals_expiring_most_often = @fridge.meals_expiring_most_often
+		@ingredients_expiring_most_often = @fridge.ingredients_expiring_most_often
+	end
+
 	private
 
 	def fridge_params

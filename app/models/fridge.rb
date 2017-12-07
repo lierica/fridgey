@@ -107,4 +107,21 @@ class Fridge < ApplicationRecord
 		end
 	end
 
+	def meals_expiring_most_often
+		top_5 = self.frozen_servings.group("recipe_id").having(expired: true).order("count (*) DESC").first(5)
+		top_5.inject({}) do |acc, meal|
+			acc[meal.recipe.name] = self.frozen_servings.where("recipe_id = #{meal.recipe_id}").where(expired: true).count
+			acc
+		end
+
+	end
+
+	def ingredients_expiring_most_often
+		top_5 = self.fridge_ingredients.group("ingredient_id").having(expired: true).order("count (*) DESC").first(5)
+		top_5.inject({}) do |acc, ingredient|
+			acc[ingredient.ingredient.name] = self.fridge_ingredients.where("ingredient_id = #{ingredient.ingredient_id}").where(expired: true).count
+			acc
+		end
+	end
+
 end
