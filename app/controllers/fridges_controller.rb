@@ -38,12 +38,8 @@ class FridgesController < ApplicationController
 		@fridge = Fridge.find(params[:fridge_id])
 		@meals_expiring_most_often = @fridge.meals_expiring_most_often
 		@ingredients_expiring_most_often = @fridge.ingredients_expiring_most_often
-	end
-
-	private
-
-	def fridge_params
-		params.require(:fridge).permit(*args)
+		@most_frequent_meals = @fridge.most_frequent_meals
+		@most_frequent_ingredients = @fridge.most_frequent_ingredients
 	end
 
 end

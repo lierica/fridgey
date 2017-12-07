@@ -15,16 +15,45 @@
 				<% end %>
 	</table>
 
-	<h3> Ingredients </h3>
-		<table>
-		  <tr>
-		    <th>Name</th>
-		    <th>Times Expired</th>
-		  </tr>
-					<% @ingredients_expiring_most_often.each do |k, v| %>
-			<tr>
-		    <td><%= k %></td>
-		    <td><%= v %></td>
-			</tr>
-					<% end %>
-		</table>
+<h3> Ingredients </h3>
+	<table>
+		 <tr>
+		   <th>Name</th>
+		   <th>Times Expired</th>
+		 </tr>
+				<% @ingredients_expiring_most_often.each do |k, v| %>
+		<tr>
+		   <td><%= k %></td>
+		   <td><%= v %></td>
+		</tr>
+				<% end %>
+	</table>
+
+<h2> Most Frequently Eaten Items </h2>
+<h3> Meals </h3>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Times Eaten</th>
+	  </tr>
+				<% @most_frequent_meals.each do |k, v| %>
+		<tr>
+	    <td><%= k %></td>
+	    <td><%= v %></td>
+		</tr>
+				<% end %>
+	</table>
+
+<h3> Ingredients </h3>
+	<table>
+		 <tr>
+		   <th>Name</th>
+		   <th>Times Eaten</th>
+		 </tr>
+				<% @most_frequent_ingredients.each do |k, v| %>
+		<tr>
+		   <td><%= k %></td>
+		   <td><%= v %></td>
+		</tr>
+				<% end %>
+	</table>

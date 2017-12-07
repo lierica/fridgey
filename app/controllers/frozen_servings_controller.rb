@@ -12,9 +12,4 @@ class FrozenServingsController < ApplicationController
 		redirect_to fridge_path(@fridge)
 	end
 
-	# private
-  #
-	# def frozen_serving_params
-	# 	params.require(:frozen_serving).permit(fridge_id:, {frozen_serving: :recipe_id, :date_in})
-	# end
 end
