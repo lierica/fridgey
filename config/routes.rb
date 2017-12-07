@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	post '/fridges/:id/eat_ingredients', to: "fridges#eat_ingredients", as: "eat_ingredients"
 	get '/login', to: "sessions#new"
 	post '/login', to: "sessions#create"
+	get '/signup', to: "fridges#new"
+	post '/signup', to: "fridges#create"
 	post '/logout', to: "sessions#destroy"
 
 end

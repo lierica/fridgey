@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
 	def create
 		@fridge = Fridge.find_by(name: params[:name])
-		if @fridge
+		if @fridge && @fridge.authenticate(params[:password])
 			session[:fridge_id] = @fridge.id
 			redirect_to fridge_path(@fridge)
 		else

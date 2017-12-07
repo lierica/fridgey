@@ -1,8 +1,11 @@
 class Fridge < ApplicationRecord
+	has_secure_password
 	has_many :fridge_ingredients
 	has_many :ingredients, through: :fridge_ingredients
 	has_many :frozen_servings
 	has_many :recipes, through: :frozen_servings
+
+	validates :name, uniqueness: true
 
 	def expired_fridge_ingredients
 		self.fridge_ingredients.each do |ingredient|

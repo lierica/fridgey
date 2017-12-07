@@ -7,8 +7,15 @@ before_action :authorized, except: [:new, :create]
 	end
 
 	def create
-		Fridge.create(fridge_params)
-		redirect_to fridge_path(@fridge)
+		@fridge = Fridge.new(fridge_params)
+
+		if @fridge.save
+			redirect_to fridge_path(@fridge)
+			session[:fridge_id] = @fridge.id
+		else
+			redirect_to '/signup'
+		end
+
 	end
 
 	def show
@@ -58,6 +65,10 @@ before_action :authorized, except: [:new, :create]
 		if !logged_in?
 			redirect_to '/fridges/new'
 		end
-
 	end
+
+	def fridge_params
+    params.require(:fridge).permit(:name, :password, :password_confirmation)
+  end
+
 end
