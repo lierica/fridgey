@@ -22,6 +22,18 @@ class FridgesController < ApplicationController
 		redirect_to fridge_path(@fridge)
 	end
 
+	def eat_meals
+		@fridge = Fridge.find(params[:id])
+		@fridge.eat_meals(params[:eat_meals])
+		redirect_to fridge_path(@fridge)
+	end
+
+	def eat_ingredients
+		@fridge = Fridge.find(params[:id])
+		@fridge.eat_ingredients(params[:eat_ingredients])
+		redirect_to fridge_path(@fridge)
+	end
+
 	private
 
 	def fridge_params

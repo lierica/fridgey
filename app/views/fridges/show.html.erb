@@ -5,66 +5,76 @@
 <%= submit_tag "Sort" %>
 <% end %>
 
-<h2>Frozen Meals</h2>
+<h2>Frozen Meals <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %></h2>
 	<table>
-  <tr>
-    <th>Name</th>
-    <th>Date In</th>
-    <th>Days Until Expiration</th>
-  </tr>
-		<% @frozen_servings.each do |meal| %>
-			<% if meal.date_out.nil? %>
-	<tr>
-    <td><%= meal.recipe.name %></td>
-    <td><%= meal.date_in.strftime("%m/%d") %></td>
-    <td><%= meal.expiration_message %></td>
-	</tr>
+	  <tr>
+			<th>Delete</th>
+	    <th>Name</th>
+	    <th>Date In</th>
+	    <th>Days Until Expiration</th>
+	  </tr>
+			<%= form_tag eat_meals_path(@fridge) do %>
+				<% @frozen_servings.each do |meal| %>
+					<% if meal.date_out.nil? %>
+		<tr>
+			<td><%= check_box_tag("eat_meals[]", meal.id) %></td>
+	    <td><%= meal.recipe.name %></td>
+	    <td><%= meal.date_in.strftime("%m/%d") %></td>
+	    <td><%= meal.expiration_message %></td>
+		</tr>
+					<% end %>
+				<% end %>
+			<%= submit_tag "Eat Meals" %>
 		<% end %>
-	<% end %>
-</table>
-	 <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
+	</table>
 
-<h2>Ingredients</h2>
+
+<h2>Ingredients <%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %></h2>
 	<table>
-  <tr>
-    <th>Name</th>
-    <th>Date In</th>
-    <th>Days Until Expiration</th>
-  </tr>
-		<% @fridge_ingredients.each do |ingredient| %>
-			<% if ingredient.date_out.nil? %>
-	<tr>
-    <td><%= ingredient.ingredient.name %></td>
-    <td><%= ingredient.date_in.strftime("%m/%d") %></td>
-    <td><%= ingredient.expiration_message %></td>
-	</tr>
+	  <tr>
+			<th>Delete</th>
+	    <th>Name</th>
+	    <th>Date In</th>
+	    <th>Days Until Expiration</th>
+	  </tr>
+			<%= form_tag eat_ingredients_path(@fridge) do %>
+				<% @fridge_ingredients.each do |ingredient| %>
+					<% if ingredient.date_out.nil? %>
+		<tr>
+			<td><%= check_box_tag("eat_ingredients[]", ingredient.id) %></td>
+	    <td><%= ingredient.ingredient.name %></td>
+	    <td><%= ingredient.date_in.strftime("%m/%d") %></td>
+	    <td><%= ingredient.expiration_message %></td>
+		</tr>
+					<% end %>
+	 			<% end %>
+			<%= submit_tag "Eat Ingredients" %>
 		<% end %>
-	<% end %>
-</table>
-	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
+	</table>
+
 
 <h2>Expired Items</h2>
 <table>
-<tr>
-	<th>Name</th>
-	<th>Days Expired</th>
-</tr>
-	<% if !@fridge.expired_frozen_servings.empty? %>
-	<% @fridge.frozen_servings.where(expired: true).where(date_out: nil).each do |meal| %>
-<tr>
-	<td><%= meal.recipe.name %></td>
-	<td><%= meal.expiration_message %></td>
-</tr>
-	<% end %>
-<% end %>
+	<tr>
+		<th>Name</th>
+		<th>Days Expired</th>
+	</tr>
+		<% if !@fridge.expired_frozen_servings.empty? %>
+			<% @fridge.frozen_servings.where(expired: true).where(date_out: nil).each do |meal| %>
+	<tr>
+		<td><%= meal.recipe.name %></td>
+		<td><%= meal.expiration_message %></td>
+	</tr>
+			<% end %>
+		<% end %>
 
-	<% if !@fridge.expired_fridge_ingredients.empty? %>
-	<% @fridge.fridge_ingredients.where(expired: true).where(date_out: nil).each do |ingredient| %>
-<tr>
-	<td><%= ingredient.ingredient.name %></td>
-	<td><%= ingredient.expiration_message %></td>
-</tr>
-	<% end %>
-<% end %>
+		<% if !@fridge.expired_fridge_ingredients.empty? %>
+			<% @fridge.fridge_ingredients.where(expired: true).where(date_out: nil).each do |ingredient| %>
+	<tr>
+		<td><%= ingredient.ingredient.name %></td>
+		<td><%= ingredient.expiration_message %></td>
+	</tr>
+			<% end %>
+		<% end %>
 </table>
 <%= button_to "Throw Out Expired Items", throwaway_path(@fridge), method: :post %>

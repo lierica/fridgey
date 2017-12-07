@@ -33,6 +33,22 @@ class Fridge < ApplicationRecord
 		end
 	end
 
+	def eat_meals(meal_array)
+		meal_array.each do |meal|
+			eaten_meal = frozen_servings.find(meal)
+			eaten_meal.date_out = Date.today
+			eaten_meal.save
+		end
+	end
+
+	def eat_ingredients(ingredient_array)
+		ingredient_array.each do |ingredient|
+			eaten_ingredient = fridge_ingredients.find(ingredient)
+			eaten_ingredient.date_out = Date.today
+			eaten_ingredient.save
+		end
+	end
+
 	def sort_fridge_ingredients(sort_method)
 		self.expired_fridge_ingredients
 		if sort_method.nil? || sort_method == "DATE ASC"
