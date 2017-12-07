@@ -23,11 +23,13 @@ class Fridge < ApplicationRecord
 	end
 
 	def toss
-		self.expired_fridge_ingredients.each do |ingredient|
+		self.fridge_ingredients.where(expired: true).each do |ingredient|
 			ingredient.date_out = Date.today
+			ingredient.save
 		end
-		self.expired_frozen_servings.each do |meal|
+		self.frozen_servings.where(expired: true).each do |meal|
 			meal.date_out = Date.today
+			meal.save
 		end
 	end
 

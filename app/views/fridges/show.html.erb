@@ -50,21 +50,19 @@
 	<th>Days Expired</th>
 </tr>
 	<% if !@fridge.expired_frozen_servings.empty? %>
-	<% @fridge.frozen_servings.where(expired: true).each do |meal| %>
+	<% @fridge.frozen_servings.where(expired: true).where(date_out: nil).each do |meal| %>
 <tr>
 	<td><%= meal.recipe.name %></td>
 	<td><%= meal.expiration_message %></td>
-	<td><%= meal.days_until_expiration %></td>
 </tr>
 	<% end %>
 <% end %>
 
 	<% if !@fridge.expired_fridge_ingredients.empty? %>
-	<% @fridge.fridge_ingredients.where(expired: true).each do |ingredient| %>
+	<% @fridge.fridge_ingredients.where(expired: true).where(date_out: nil).each do |ingredient| %>
 <tr>
 	<td><%= ingredient.ingredient.name %></td>
 	<td><%= ingredient.expiration_message %></td>
-	<td><%= ingredient.days_until_expiration %></td>
 </tr>
 	<% end %>
 <% end %>
