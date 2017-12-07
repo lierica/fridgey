@@ -1,5 +1,7 @@
 class FridgesController < ApplicationController
 
+before_action :authorized, except: [:new, :create]
+
 	def new
 		@fridge = Fridge.new
 	end
@@ -24,14 +26,22 @@ class FridgesController < ApplicationController
 
 	def eat_meals
 		@fridge = Fridge.find(params[:id])
-		@fridge.eat_meals(params[:eat_meals])
-		redirect_to fridge_path(@fridge)
+		if params[:eat_meals].nil?
+			redirect_to fridge_path(@fridge)
+		else
+			@fridge.eat_meals(params[:eat_meals])
+			redirect_to fridge_path(@fridge)
+		end
 	end
 
 	def eat_ingredients
 		@fridge = Fridge.find(params[:id])
-		@fridge.eat_ingredients(params[:eat_ingredients])
-		redirect_to fridge_path(@fridge)
+		if params[:eat_ingredients].nil?
+			redirect_to fridge_path(@fridge)
+		else
+			@fridge.eat_ingredients(params[:eat_ingredients])
+			redirect_to fridge_path(@fridge)
+		end
 	end
 
 	def analytics
@@ -42,4 +52,12 @@ class FridgesController < ApplicationController
 		@most_frequent_ingredients = @fridge.most_frequent_ingredients
 	end
 
+	private
+
+	def authorized
+		if !logged_in?
+			redirect_to '/fridges/new'
+		end
+
+	end
 end
