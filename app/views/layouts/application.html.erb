@@ -9,8 +9,12 @@
   </head>
 
   <body>
+    <% if session[:fridge_id] %>
+    <%= link_to "My Fridge", fridge_path(session[:fridge_id]) %>
+    <%= link_to "Analytics", fridge_analytics_path(session[:fridge_id]) %>
     <%= link_to "Log Out", '/logout', method: :post %>
-    
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
