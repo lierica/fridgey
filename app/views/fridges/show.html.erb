@@ -1,13 +1,32 @@
-<h1><%= @fridge.name %>'s Fridge</h1>
+<div class="row">
+	<div class="col-lg-6">
+		<h1><%= @fridge.name %>'s Fridge</h1>
+</div>
+
+<div class="col-lg-6">
+	<p>Play Greeting Message: <audio controls>
+  	<source src= <%= audio_path('/audios/Fridgey.m4a') %> type="audio/mpeg">
+		</audio></p>
+	</div>
+</div>
+
+<br>
+<br>
 
 <%= form_tag fridge_path(@fridge), method: :get do %>
-<p>Sort by: </p> <%= select_tag(:sort, options_for_select([["Expiring Soonest", "EXP ASC"], ["Most Days Until Expiration", "EXP DESC"], ["Name", "NAME"], ["Recently Added", "DATE DESC" ], ["In Fridge Longest", "DATE ASC"]], @previous_selection)) %>
+<%= select_tag(:sort, options_for_select([["Expiring Soonest", "EXP ASC"], ["Most Days Until Expiration", "EXP DESC"], ["Name", "NAME"], ["Recently Added", "DATE DESC" ], ["In Fridge Longest", "DATE ASC"]], @previous_selection)) %>
 <%= submit_tag "Sort" %>
 <% end %>
 
+<br>
+<br>
 
-<h2>Frozen Meals <%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %></h2>
-	<table>
+<div class="row">
+<div class="col-lg-6">
+<h2>Frozen Meals </h2>
+<br>
+<%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
+	<table class="table-striped">
 	  <tr>
 			<th>Delete</th>
 	    <th>Name</th>
@@ -28,10 +47,12 @@
 			<%= submit_tag "Eat Meals" %>
 		<% end %>
 	</table>
+</div>
 
-
-<h2>Ingredients <%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %></h2>
-	<table>
+<div class="col-lg-6">
+<h2>Ingredients</h2>
+<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
+	<table class="table-striped">
 	  <tr>
 			<th>Delete</th>
 	    <th>Name</th>
@@ -52,10 +73,11 @@
 			<%= submit_tag "Eat Ingredients" %>
 		<% end %>
 	</table>
-
+	</div>
+</div>
 
 <h2>Expired Items</h2>
-<table>
+<table class="table-striped">
 	<tr>
 		<th>Name</th>
 		<th>Days Expired</th>
