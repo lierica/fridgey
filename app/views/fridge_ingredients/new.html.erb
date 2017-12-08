@@ -1,5 +1,11 @@
+<div class="row">
+	<div class="col-lg-6">
+		<img src= <%= image_path('/images/fridge.png') %> >
+	</div>
+
 <h1><b>Add an Ingredient</b></h1>
 <br>
+<div class="col-lg-6">
 <%= form_for [@fridge, @fridge_ingredient] do |f| %>
 <div class="form-group">
 	<%= f.label "Choose an Ingredient:" %>
@@ -23,3 +29,5 @@
 	<br>
 	<%= f.submit "Add Ingredient", class: "btn-info" %>
 <% end %>
+</div>
+</div>
