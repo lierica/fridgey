@@ -1,10 +1,15 @@
-<h1> Add a Meal </h1>
+<h1><b>Add a Meal<b></h1>
+<br>
 <%= form_for [@fridge, @frozen_serving] do |f| %>
+<div class="form-group">
 	<%= f.label "Choose Meal:" %>
 	<%= f.collection_select :recipe_id, @recipes, :id, :name %> <br>
+</div>
 	<br>
+<div class="form-group">
 	<%= f.label "Date Made:"%>
  	<%= f.date_field :date_in %><br>
+</div>
 	<br>
-	<%= f.submit "Add Meal" %>
+	<%= f.submit "Add Meal", class: "btn-info" %>
 <% end %>

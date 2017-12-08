@@ -22,9 +22,6 @@ body {
   background-size: cover;*/
 }
 
-table {
-	cell-padding: 25px;
-  /*border-collapse:separate;
-  border-spacing:20px 15px;*/
-
-}​​​​​​​​​​​​​
+.btn-info {
+	padding: 10px 10px;
+}

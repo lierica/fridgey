@@ -1,8 +1,11 @@
-<h1> Your Fridge Analytics </h1>
-
+<h1><b>Your Fridge Analytics</h1></b>
+<br>
 <h2>Items Expiring Most Often</h2>
+
+<div class="row">
+<div class="col-lg-6">
 <h3> Meals </h3>
-	<table>
+	<table class="table table-striped table-bordered table-hover">
 	  <tr>
 	    <th>Name</th>
 	    <th>Times Expired</th>
@@ -14,9 +17,11 @@
 		</tr>
 				<% end %>
 	</table>
+</div>
 
+<div class="col-lg-6">
 <h3> Ingredients </h3>
-	<table>
+	<table class="table table-striped table-bordered table-hover">
 		 <tr>
 		   <th>Name</th>
 		   <th>Times Expired</th>
@@ -28,10 +33,16 @@
 		</tr>
 				<% end %>
 	</table>
+</div>
+</div>
+
 
 <h2> Most Frequently Eaten Items </h2>
+
+<div class="row">
+<div class="col-lg-6">
 <h3> Meals </h3>
-	<table>
+	<table class="table table-striped table-bordered table-hover">
 	  <tr>
 	    <th>Name</th>
 	    <th>Times Eaten</th>
@@ -43,9 +54,11 @@
 		</tr>
 				<% end %>
 	</table>
+</div>
 
+<div class="col-lg-6">
 <h3> Ingredients </h3>
-	<table>
+	<table class="table table-striped table-bordered table-hover">
 		 <tr>
 		   <th>Name</th>
 		   <th>Times Eaten</th>
@@ -57,3 +70,5 @@
 		</tr>
 				<% end %>
 	</table>
+</div>
+</div>

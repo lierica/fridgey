@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="col-lg-6">
-		<h1><%= @fridge.name %>'s Fridge</h1>
+		<h1><b><%= @fridge.name %>'s Fridge</h1></b>
 </div>
 
 <div class="col-lg-6">
-	<p>Play Greeting Message: <audio controls>
+	<p>Play Greeting Message:<audio controls>
   	<source src= <%= audio_path('/audios/Fridgey.m4a') %> type="audio/mpeg">
 		</audio></p>
 	</div>
@@ -25,7 +25,6 @@
 <div class="col-lg-6">
 <h2>Frozen Meals </h2>
 <br>
-<%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get %>
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>Delete</th>
@@ -44,14 +43,15 @@
 		</tr>
 					<% end %>
 				<% end %>
-			<%= submit_tag "Eat Meals" %>
+			<%= submit_tag "Eat Meals", class: "btn-info" %>
 		<% end %>
+	<%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get, class: "btn-info"%>
 	</table>
 </div>
 
 <div class="col-lg-6">
 <h2>Ingredients</h2>
-<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get %>
+<br>
 	<table class="table table-striped table-bordered table-hover">
 	  <tr>
 			<th>Delete</th>
@@ -70,13 +70,18 @@
 		</tr>
 					<% end %>
 	 			<% end %>
-			<%= submit_tag "Eat Ingredients" %>
+			<%= submit_tag "Eat Ingredients", class: "btn-info" %>
 		<% end %>
+	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get, class: "btn-info"%>
 	</table>
 	</div>
 </div>
 
+
 <h2>Expired Items</h2>
+<br>
+<%= button_to "Throw Out Expired Items", throwaway_path(@fridge), method: :post, class: "btn-info" %>
+<br>
 <table class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Name</th>
@@ -100,4 +105,3 @@
 			<% end %>
 		<% end %>
 </table>
-<%= button_to "Throw Out Expired Items", throwaway_path(@fridge), method: :post %>
