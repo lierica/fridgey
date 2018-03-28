@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Recipe.destroy_all
+Ingredient.destroy_all
+FrozenServing.destroy_all
+FridgeIngredient.destroy_all
+Fridge.create(name: "guest", password_digest: BCrypt::Password.create("test"))
 
 Recipe.create(name: "Macaroni and Cheese")
 Recipe.create(name: "Turkey Taco")

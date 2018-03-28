@@ -1,6 +1,8 @@
 class FridgeIngredient < ApplicationRecord
   belongs_to :ingredient
   belongs_to :fridge
+  validates :date_in, presence: true
+
 
   def expiration_date
     self.date_in + self.ingredient.expiration_days

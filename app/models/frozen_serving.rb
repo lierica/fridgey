@@ -1,6 +1,7 @@
 class FrozenServing < ApplicationRecord
   belongs_to :recipe
   belongs_to :fridge
+  validates :date_in, presence: true
 
   def expiration_date
     self.date_in + 60

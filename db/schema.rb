@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20171206223942) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "fridge_ingredients", force: :cascade do |t|
-    t.integer "ingredient_id"
-    t.integer "fridge_id"
+    t.bigint "ingredient_id"
+    t.bigint "fridge_id"
     t.date "date_in"
     t.date "date_out"
     t.datetime "created_at", null: false
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 20171206223942) do
   end
 
   create_table "frozen_servings", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "fridge_id"
+    t.bigint "recipe_id"
+    t.bigint "fridge_id"
     t.date "date_in"
     t.date "date_out"
     t.datetime "created_at", null: false
@@ -56,4 +59,8 @@ ActiveRecord::Schema.define(version: 20171206223942) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "fridge_ingredients", "fridges"
+  add_foreign_key "fridge_ingredients", "ingredients"
+  add_foreign_key "frozen_servings", "fridges"
+  add_foreign_key "frozen_servings", "recipes"
 end
