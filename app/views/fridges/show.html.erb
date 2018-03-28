@@ -44,7 +44,7 @@
 				<% end %>
 			<%= submit_tag "Eat Meals", class: "btn-info" %>
 		<% end %>
-	<%= button_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get, class: "btn-info"%>
+	<%= link_to "Add a Meal", new_fridge_frozen_serving_path(@fridge), method: :get, class: "btn-info"%>
 	</table>
 </div>
 
@@ -70,7 +70,7 @@
 	 			<% end %>
 			<%= submit_tag "Eat Ingredients", class: "btn-info" %>
 		<% end %>
-	<%= button_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get, class: "btn-info"%>
+	<%= link_to "Add an Ingredient", new_fridge_fridge_ingredient_path(@fridge), method: :get, class: "btn-info" %>
 	</table>
 	</div>
 </div>
